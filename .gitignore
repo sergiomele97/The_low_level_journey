@@ -1,0 +1,15 @@
+# Binaries and Object files
+*.bin
+*.o
+*.img
+*.iso
+*.elf
+
+# QEMU / Emulation logs
+qemu.log
+*.vmdk
+
+# Editor temporary files
+.vscode/
+*.swp
+*~
