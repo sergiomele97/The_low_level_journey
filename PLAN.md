@@ -20,7 +20,9 @@ Este archivo rastrea nuestro progreso y tareas pendientes. Es la "memoria" del p
     - [ ] Switch a Protected Mode.
     - [ ] Driver de Pantalla VGA (Memoria 0xB8000).
 - [ ] **Fase 3: Kernel en C**
-    - [ ] Cross-Compiler (GCC).
+    - [ ] Configurar Cross-Compiler (i686-elf-gcc).
+    - [ ] Escribir el primer `main.c`.
+    - [ ] Unir el Bootloader con el Kernel.
     - [ ] Vincular C con Assembly.
 
 ## Tareas Activas

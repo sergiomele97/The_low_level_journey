@@ -31,3 +31,4 @@ Aquí documentamos cada paso, cada crash y cada bit aprendido.
 
 ### Meta
 - [08. Estandarización & Git](08_git.md) (Cómo nos organizamos)
+- [17. Estrategias Modernas](17_modern_os_strategies.md) (UEFI, Rust y Futuro)
