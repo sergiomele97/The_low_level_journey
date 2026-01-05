@@ -32,3 +32,17 @@ El proyecto está ahora organizado en:
 
 ---
 **Siguiente Parada:** Romper la barrera de los 16-bits. Investigar el **GDT** (Global Descriptor Table) y saltar al **Modo Protegido (32-bit)**.
+
+## Fase 3: El Gran Salto (32 bits)
+
+### 1. El Switch a Protected Mode
+Hemos implementado el "ritual sagrado" para pasar de 16 a 32 bits:
+- **GDT ([gdt.asm](file:///home/sergio/work/antigravity/The_low_level_journey/04_protected_mode/gdt.asm))**: Definimos los descriptores de segmento para código y datos.
+- **Switch ([switch_pm.asm](file:///home/sergio/work/antigravity/The_low_level_journey/04_protected_mode/switch_pm.asm))**: Desactivamos interrupciones, cargamos la GDT y activamos el bit PE en `CR0`.
+- **Bootloader ([boot.asm](file:///home/sergio/work/antigravity/The_low_level_journey/04_protected_mode/boot.asm))**: Orquestamos todo y saltamos a 32 bits.
+
+### 2. Adiós BIOS, Hola VGA RAM
+Como en 32 bits no hay interrupciones de BIOS, implementamos `print_string_pm`, que escribe directamente en la dirección física **`0xB8000`**. Ver el mensaje en pantalla es la prueba definitiva de que:
+1. La CPU está en modo 32 bits.
+2. La segmentación está funcionando.
+3. Estamos manejando el hardware a "pelo".

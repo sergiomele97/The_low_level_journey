@@ -25,6 +25,9 @@ Aquí documentamos cada paso, cada crash y cada bit aprendido.
 - [11. Caso Práctico: Suma Interactiva](11_interactive_sum_case.md) (Input y ASCII)
 - [14. Caso Práctico: Imprimir Strings](14_printing_strings_case.md) (Loops y Punteros)
 - [15. Números > 9 y División](15_multi_digit_output.md) (Sistemas de Numeración)
+ 
+ ### Fase 3: El Salto a los 32 bits
+ - [16. Protected Mode: La Teoría](16_protected_mode_theory.md) (Adiós a los 16 bits)
 
 ### Meta
 - [08. Estandarización & Git](08_git.md) (Cómo nos organizamos)
