@@ -7,6 +7,8 @@
 
 [org 0x7c00]
 
+%include "bios_io.asm"  ; Importamos nuestra nueva "librería"
+
     ; --- TU CÓDIGO EMPIEZA AQUÍ ---
 
     ; Ejercicio 1: printear mi inicial
@@ -22,9 +24,14 @@
 
     ; Voy a probar a hacer un if    
     CMP al, '2'
-    JNE
+    JNE no_imprimir
     mov al, '='
     int 0x10 
+
+no_imprimir:
+    
+    ; Ejercicio 3: Contraseña simple
+
 
 
     ; Reto: Intenta sumar dos números o leer una tecla aquí.

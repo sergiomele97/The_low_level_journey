@@ -11,6 +11,10 @@ Este archivo rastrea nuestro progreso y tareas pendientes. Es la "memoria" del p
     - [x] Driver de Teclado (Polling).
     - [x] Documentación modular (`docs/`).
     - [x] Assembly Playground (`03_assembly_playground`).
+    - [x] BIOS Utility Library (`bios_io.asm`).
+    - [x] Case Study: Interactive Sum (`docs/11_interactive_sum_case.md`).
+    - [x] Case Study: Printing Strings (`docs/14_printing_strings_case.md`).
+    - [x] Documentation Refactor & Deep Dives (Chapters 09-14).
 - [ ] **Fase 2: Protected Mode (32-bit)**
     - [ ] Investigar GDT (Global Descriptor Table).
     - [ ] Switch a Protected Mode.

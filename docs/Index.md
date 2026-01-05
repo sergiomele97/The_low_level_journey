@@ -16,11 +16,14 @@ Aquí documentamos cada paso, cada crash y cada bit aprendido.
 - [05. CPU Internals](05_cpu_internals.md) (Decoders y Microcódigo)
 - [06. x86 Technical Debt](06_x86_legacy.md) (Historia viva en silicio)
 - [09. Assembly 101: El Gimnasio](09_assembly_basics.md) (Registros, MOV, ADD, CMP)
+- [12. Subrutinas y La Pila](12_subroutines.md) (CALL, RET, PUSH, POP)
+- [13. Escalando: Proyectos Multifichero](13_multifile_projects.md) (%include y Librerías)
 
 ### Fase 2: Drivers Básicos
 - [07. Driver de Teclado](07_keyboard.md) (Interrupciones y Polling)
 - [10. Acceso a Memoria: Punteros](10_pointers_memory.md) (Corchetes y RAM)
 - [11. Caso Práctico: Suma Interactiva](11_interactive_sum_case.md) (Input y ASCII)
+- [14. Caso Práctico: Imprimir Strings](14_printing_strings_case.md) (Loops y Punteros)
 
 ### Meta
 - [08. Estandarización & Git](08_git.md) (Cómo nos organizamos)
