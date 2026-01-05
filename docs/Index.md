@@ -24,6 +24,7 @@ Aquí documentamos cada paso, cada crash y cada bit aprendido.
 - [10. Acceso a Memoria: Punteros](10_pointers_memory.md) (Corchetes y RAM)
 - [11. Caso Práctico: Suma Interactiva](11_interactive_sum_case.md) (Input y ASCII)
 - [14. Caso Práctico: Imprimir Strings](14_printing_strings_case.md) (Loops y Punteros)
+- [15. Números > 9 y División](15_multi_digit_output.md) (Sistemas de Numeración)
 
 ### Meta
 - [08. Estandarización & Git](08_git.md) (Cómo nos organizamos)
