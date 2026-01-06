@@ -20,9 +20,11 @@
 ## Fase 2: El Salto a los 32 bits
 - [16. Protected Mode: La Teoría](16_protected_mode_theory.md) (Adiós a los 16 bits)
 - [18. El Ritual: BIOS vs UEFI](18_uefi_vs_bios_ritual.md) (¿Por qué hacemos esto?)
+- [19. Destripando los 32 bits](19_protected_mode_code_breakdown.md) (Paso a Paso)
 
-## Fase 3: El Kernel en C (Próximamente)
-- [ ] 19. El Cross-Compiler (i686-elf-gcc)
+## Fase 3: El Kernel en C
+- [20. El Cross-Compiler](20_cross_compiler_theory.md) (La Barrera de C)
+- [21. Linker Scripts y Entry Points](21_linker_scripts.md) (Paso a C)
 
 ---
 ### Meta
