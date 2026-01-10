@@ -1,0 +1,10 @@
+B7 02 00 10  # 0x00: lui t0, 0x10000
+03 C3 52 00  # 0x04: lbu t1, 5(t0)
+13 73 13 00  # 0x08: andi t1, t1, 1
+E3 0C 03 FE  # 0x0C: beq t1, x0, -8 (to 0x04)
+03 C3 02 00  # 0x10: lbu t1, 0(t0)
+83 C3 52 00  # 0x14: lbu t2, 5(t0) (Read into x7)
+93 F3 03 02  # 0x18: andi t2, t2, 32 (Mask bit 5)
+E3 8C 03 FE  # 0x1C: beq t2, x0, -8 (Wait for THRE, goto 0x14)
+23 80 62 00  # 0x20: sb t1, 0(t0)
+6F F0 1F FE  # 0x24: jal x0, -32 (Goto 0x04)

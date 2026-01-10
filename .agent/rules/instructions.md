@@ -1,15 +1,20 @@
-# Workspace Rules: The Low Level Journey
+# Workspace Rules: The Low Level Journey (RISC-V Edition)
 
 ## 🧬 Principles
-- **No Magic / Zero Abstractions:** Avoid unnecessary abstractions. Every concept (GDT, Rasm, Capas de Abstracción) must be explained and implemented manually.
-- **Documentation First:** All learning, errors, and decisions must be documented in `_docs/` within each architecture folder.
-- **Layers Approach:** We build our own abstractions (Assembler, OS) and document each layer as a "refined module".
-- **Vibecoding:** Keep explanations simple, clear, and attractive. Focus on the *why* and the learning process.
+- **No Magic / Pureza Absoluta:** No external tools (No GCC, No Python for output). Everything built from Capa 0.
+- **Dual Documentation:**
+    - `_docs/capas/`: Technical, synthesized specs of each layer.
+    - `_docs/log/`: Numbered chronological learning journey (mistakes, solutions).
+- **Structure Partition:**
+    - `core/`: Refined "final" code for each layer.
+    - `lab/`: Experimental area for testing and manual injections.
 
 ## 📁 Structure
-- `01_amd_introduction/`: Legacy studies of x86.
-- `02_risc-v/`: Current path following "Zero Abstractions" philosophy.
-- `*/_docs/`: Refined documentation for each module.
+- `01_amd_introduction/`: Legacy x86 material.
+- `02_risc-v/`: Current project path.
+    - `02_risc-v/_docs/`: Documentation (Log & Capas).
+    - `02_risc-v/core/`: Production code.
+    - `02_risc-v/lab/`: Experimental code.
 
 ## ✅ Goal
-Build a self-hosted Operating System for RISC-V from scratch, starting from the silicion (Capa 0).
+Build a self-hosted OS for RISC-V from absolute zero (Silicon manual).

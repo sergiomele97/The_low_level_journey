@@ -1,0 +1,4 @@
+B7 02 00 10  # lui t0, 0x10000 (UART Base)
+13 03 10 04  # addi t1, zero, 65 ('A')
+23 80 62 00  # sb t1, 0(t0) (Escribir en UART)
+6F 00 00 00  # jal zero, 0 (Fin)
