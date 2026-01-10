@@ -1,0 +1,7 @@
+# RISC-V Manual Bootstrap (Zero Abstractions)
+# Cada línea es una instrucción de 32 bits (4 bytes) en Little Endian.
+
+93 02 10 00  # addi t0, zero, 1
+13 03 20 00  # addi t1, zero, 2
+b3 83 62 00  # add t2, t0, t1
+6f 00 00 00  # jal zero, 0 (Bucle infinito)

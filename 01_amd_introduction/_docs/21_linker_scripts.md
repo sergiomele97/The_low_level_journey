@@ -13,10 +13,11 @@ Como nosotros no tenemos ese código oculto, hemos creado nuestro propio **Kerne
 ### 2. El Mapa del Tesoro: Linker Scripts
 ¿Cómo sabe la CPU que el código empieza exactamente en una dirección y no en otra? Para eso usamos el **Linker Script** ([`linker.ld`](file:///home/sergio/work/antigravity/The_low_level_journey/05_kernel_c/linker.ld)).
 
-El Linker (enlazador) es el que une los archivos `.o` de C y los de Assembly en un solo binario. Sin el script, el linker pondría las funciones en el orden que quisiera. Con el script le ordenamos:
-1.  **`ENTRY(kmain)`**: La función principal es `kmain`.
-2.  **`. = 0x1000`**: Pon todo el código a partir de la dirección de memoria `0x1000`.
-3.  **`.text`**: Aquí va el código ejecutable.
+**¿Por qué usamos la dirección `0x1000`?**
+Es una decisión de diseño para evitar conflictos:
+- **`0x0000 - 0x0500`**: Reservado para la tabla de vectores de interrupción de la BIOS.
+- **`0x7C00`**: Donde vive el Bootloader.
+- **`0x1000`**: Es un solar vacío y seguro. Está lejos de los datos críticos de la BIOS y deja espacio suficiente antes del bootloader.
 
 ### 3. Cargar desde el Disco
 Nuestro Bootloader ahora es más inteligente. Usa la **Interrupción de BIOS 0x13** para leer los sectores del disco que vienen justo después de él (donde hemos pegado nuestro kernel compilado) y meterlos directamente en la RAM en la posición `0x1000`.

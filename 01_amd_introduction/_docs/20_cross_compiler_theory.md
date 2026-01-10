@@ -14,9 +14,13 @@ Nuestro Kernel **ES** el sistema operativo. No hay nada debajo. Si usamos el `gc
 ### 2. ¿Qué es un Cross-Compiler?
 Es un compilador que corre en tu máquina (Linux x64) pero genera código para **otra** máquina o entorno (nuestro Bare Metal 32-bit).
 
-El target estándar para esto es **`i686-elf`**.
-- `i686`: Indica que queremos código de 32 bits (compatible con nuestro Modo Protegido).
-- `elf`: Es un formato de archivo binario muy limpio y estándar que no añade "basura" de ningún sistema operativo específico.
+**¿Qué estamos usando nosotros?**
+Técnicamente, estamos usando tu `gcc` nativo pero "forzándolo" a actuar como un Cross-Compiler mediante banderas:
+- `-m32`: Genera código de 32 bits intel (i386).
+- `-ffreestanding`: Elimina toda la "magia" y librerías de Linux.
+- `-nostdlib`: Evita que se incluya el código de inicio estándar de Linux.
+
+Es el camino más rápido para empezar sin tener que compilar durante 3 horas un `i686-elf-gcc` real, y el resultado para un kernel básico es idéntico.
 
 ### 3. El modo "Freestanding"
 Cuando compilemos, le diremos a GCC que sea **`-ffreestanding`**. Esto es como decirle: *"Oye, no asumas que existe `printf`, ni `malloc`, ni nada. Estás solo. Buena suerte"*.

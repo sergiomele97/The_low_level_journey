@@ -25,6 +25,9 @@
 ## Fase 3: El Kernel en C
 - [20. El Cross-Compiler](20_cross_compiler_theory.md) (La Barrera de C)
 - [21. Linker Scripts y Entry Points](21_linker_scripts.md) (Paso a C)
+- [22. GDT Deep Dive](22_gdt_deep_dive.md) (El Segurata de 32 bits)
+- [23. El Pipeline de Compilación](23_compilation_pipeline.md) (Puzzles y Objetos)
+- [24. Makefile Automation](24_makefile_automation.md) (El Robot de Cocina)
 
 ---
 ### Meta
