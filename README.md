@@ -11,6 +11,9 @@ Para nuevos entornos:
 Alternativa sin límite por quota de uso: cline + api gratis de google ai studio.
 Se define persistencia en: .clinerules
 
+Vale pues la api de google esta capada a 20 llamadas por día y los modelos locales en mi 3070 no dan mucho de si.
+El nuev foco va a ser sin agentes de IA.
+
 ## Reglas de Oro del Proyecto:
 - **Objetivo:** Crear un sistema operativo desde cero.
 - **Documentación:** Todo en `docs/`, cronológico y atractivo.
