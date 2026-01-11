@@ -1,0 +1,85 @@
+37 04 01 00 # lui s0, 0x10000 (UART_BASE)
+B7 04 00 08 # lui s1, 0x80000
+93 84 24 00 # addi s1, s1, 0x200 (USER_CODE_BUFFER = 0x80000200)
+
+#========================================
+# main_loop: (Address 0x8000000C)
+#========================================
+13 E5 03 00 # addi a0, zero, 0x3E (a0 = ">")
+EF 00 50 06 # jal ra, uart_putchar (offset = 0x64 = 100 bytes)
+13 05 02 00 # addi a0, zero, 0x20 (a0 = " ")
+EF 00 10 06 # jal ra, uart_putchar (offset = 0x60 = 96 bytes)
+
+#========================================
+# input_loop: (Address 0x8000001C)
+#========================================
+EF 00 50 04 # jal ra, uart_getchar (offset = 0x44 = 68 bytes)
+93 02 A5 00 # addi t0, zero, 0x0A (t0 = 0x0A)
+63 04 95 04 # beq a0, t0, execute_code (offset = 0x48 = 72 bytes)
+93 02 D5 00 # addi t0, zero, 0x0D (t0 = 0x0D)
+63 04 55 04 # beq a0, t0, execute_code (offset = 0x44 = 68 bytes)
+93 02 05 02 # addi t0, zero, 0x20 (t0 = 0x20)
+63 8C C2 FE # beq a0, t0, input_loop (offset = -0x14 = -20 bytes)
+13 83 05 00 # addi t1, a0, 0 (Save first char in t1)
+EF 00 A0 01 # jal ra, hex_to_nibble (offset = 0x1A = 26 bytes)
+83 75 00 00 # bltz a0, input_loop (offset = 0x00007 = ???)
+93 13 45 00 # slli t2, a0, 4
+EF 00 10 02 # jal ra, uart_getchar (offset = 0x20 = 32 bytes)
+EF 00 00 01 # jal ra, hex_to_nibble (offset = 0x10 = 16 bytes)
+83 75 00 00 # bltz a0, input_loop (offset = 0x00007 = ???)
+B3 C3 53 00 # or t2, t2, a0
+23 00 74 00 # sb t2, 0(s1)
+93 84 14 00 # addi s1, s1, 1
+6F 00 C0 FF # jal zero, input_loop (offset = -0x4 = -4 bytes)
+
+#========================================
+# execute_code: (Address 0x80000064)
+#========================================
+B7 04 00 08 # lui s1, 0x80000
+93 84 24 00 # addi s1, s1, 0x200
+67 C0 04 00 # jalr zero, s1, 0
+
+#========================================
+# FUNCTION: uart_putchar (Address 0x8000006C)
+#========================================
+23 00 A4 00 # sb a0, 0(s0)
+67 80 00 00 # jalr zero, ra, 0
+
+#========================================
+# FUNCTION: uart_getchar (Address 0x80000074)
+#========================================
+83 C2 54 00 # lbu t0, 5(s0)
+93 72 12 00 # andi t0, t0, 1
+63 8C 02 FE # beq t0, zero, -8 (uart_getchar loop)
+03 C5 04 00 # lbu a0, 0(s0)
+67 80 00 00 # jalr zero, ra, 0
+
+#========================================
+# FUNCTION: hex_to_nibble (Address 0x80000084)
+#========================================
+93 02 05 03 # addi t0, zero, 0x30 ("0")
+63 C4 B5 00 # blt a0, t0, check_upper (offset = 0x00B = 11 bytes)
+93 02 95 03 # addi t0, zero, 0x39 ("9")
+63 C8 75 00 # bgt a0, t0, check_upper (offset = 0x007 = 7 bytes)
+13 05 05 FD # addi a0, a0, -0x30
+67 80 00 00 # jalr zero, ra, 0
+
+# check_upper: (Address 0x8000009C)
+93 02 15 04 # addi t0, zero, 0x41 ("A")
+63 C4 75 00 # blt a0, t0, check_lower (offset = 0x007 = 7 bytes)
+93 02 65 04 # addi t0, zero, 0x46 ("F")
+63 C8 35 00 # bgt a0, t0, check_lower (offset = 0x003 = 3 bytes)
+13 05 95 FC # addi a0, a0, -0x37
+67 80 00 00 # jalr zero, ra, 0
+
+# check_lower: (Address 0x800000B4)
+93 02 15 06 # addi t0, zero, 0x61 ("a")
+63 C4 75 00 # blt a0, t0, invalid_char (offset = 0x007 = 7 bytes)
+93 02 65 06 # addi t0, zero, 0x66 ("f")
+63 C8 35 00 # bgt a0, t0, invalid_char (offset = 0x003 = 3 bytes)
+13 05 95 FA # addi a0, a0, -0x57
+67 80 00 00 # jalr zero, ra, 0
+
+# invalid_char: (Address 0x800000CC)
+13 05 F0 FF # addi a0, zero, -1
+67 80 00 00 # jalr zero, ra, 0
