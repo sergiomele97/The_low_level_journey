@@ -8,6 +8,9 @@ Para nuevos entornos:
 1. Asegúrate de que la carpeta `.agent/rules/` existe.
 2. El archivo `instructions.md` dentro de esa carpeta guiará al Agente.
 
+Alternativa sin límite por quota de uso: cline + api gratis de google ai studio.
+Se define persistencia en: .clinerules
+
 ## Reglas de Oro del Proyecto:
 - **Objetivo:** Crear un sistema operativo desde cero.
 - **Documentación:** Todo en `docs/`, cronológico y atractivo.
