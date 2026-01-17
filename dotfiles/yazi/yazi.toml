@@ -1,0 +1,9 @@
+[opener]
+edit = [
+    { run = '/usr/bin/nvim "$@"', block = true }
+]
+
+[open]
+rules = [
+    { name = "*", use = "edit" }
+]

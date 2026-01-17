@@ -1,0 +1,26 @@
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/work/dotfiles}"
+export PATH="$HOME/.local/bin:$PATH"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Alias original + Ventana 2 corregida (usando -l para evitar el error de size)
+# Alias original + Ventana 2 corregida
+alias tm="tmux attach-session -t principal || tmux new-session -s principal -n '🏠 Principal' \; split-window -h -l 30 'nano -xtc ~/tmux_csheet.md' \; select-pane -t 0 \; new-window -n '💻 Dev' \; new-window -n '🚀 RISC-V' \; split-window -h \; select-pane -t 1 \; split-window -v -l 6 \"nano -xtc \$DOTFILES_DIR/qemu_csheet.md\" \; select-window -t 0"
+
+# Navegación rápida
+alias ..="cd .."
+alias dot="cd \$DOTFILES_DIR"
+# Alias para depurar el proyecto de RISC-V
+alias gdbr='gdb-multiarch kernel.elf -ex "target remote :1234" -ex "layout asm" -ex "layout regs" -ex "break _start" -ex "continue"'
+
+# Función Yazi
+unalias y 2>/dev/null
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
